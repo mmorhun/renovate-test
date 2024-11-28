@@ -1,0 +1,58 @@
+{
+  "platform": "github",
+  "username": "test-konflux[bot]",
+  "gitAuthor": "test-konflux <123456+test-konflux[bot]@users.noreply.github.com>",
+  "onboarding": false,
+  "requireConfig": "ignored",
+  "repositories": [
+    {
+      "repository": "mmorhun/renovate-test",
+      "baseBranches": [
+        "main"
+      ]
+    }
+  ],
+  "enabledManagers": [
+    "custom.regex"
+  ],
+  "endpoint": "https://api.github.com/",
+  "customManagers": [
+    {
+      "fileMatch": [".*.Dockerfile.*",".*.yaml",".*.Containerfile.*"],
+      "customType": "regex",
+      "datasourceTemplate": "docker",
+      "matchStrings": [
+        "quay.io/mmorhun/test2(:.*)?@(?<currentDigest>sha256:[a-f0-9]+)"
+      ],
+      "currentValueTemplate": "tag",
+      "depNameTemplate": "quay.io/mmorhun/test2"
+    }
+  ],
+  "registryAliases": {},
+  "packageRules": [
+    {
+      "matchPackagePatterns": [
+        "*"
+      ],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": [
+        "quay.io/mmorhun/test2"
+      ],
+      "groupName": "Component Update test2",
+      "branchName": "konflux/component-updates/test2",
+      "commitMessageTopic": "test2-operator",
+      "prFooter": "To execute skipped test pipelines write comment `/ok-to-test`",
+      "recreateWhen": "always",
+      "rebaseWhen": "behind-base-branch",
+      "enabled": true,
+      "followTag": "tag"
+    }
+  ],
+  "forkProcessing": "enabled",
+  "extends": [
+    ":gitSignOff"
+  ],
+  "dependencyDashboard": false
+}
