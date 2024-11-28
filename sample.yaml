@@ -1,0 +1,4 @@
+test:
+  arg: val
+  image: quay.io/mmorhun/test1:tag@sha256:fc1e86d82ffb557e622c294775cb9879beacfb70c2d3dbd5be41d3c22cf8dd82
+  test: 1234
