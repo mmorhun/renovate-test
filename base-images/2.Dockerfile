@@ -1,2 +1,2 @@
 FROM alpine
-RUN echo "22" > 1.txt
+RUN echo "2" > 2.txt

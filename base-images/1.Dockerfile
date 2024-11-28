@@ -1,2 +1,2 @@
 FROM alpine
-RUN echo "11" > 1.txt
+RUN echo "1" > 1.txt
